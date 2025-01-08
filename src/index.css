@@ -6,6 +6,16 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  --main: rgba(16, 24, 40, 1);
+  --text: rgba(71, 84, 103, 1);
+  --gray: rgba(108, 113, 123, 1);
+  --button: rgba(228, 72, 72, 1);
+  --button-hover: rgba(228, 72, 72, 1);
+  --rating: rgba(255, 197, 49, 1);
+  --gray-light: rgba(218, 221, 225, 1);
+  --badges: rgba(242, 244, 247, 1);
+  --inputs: rgba(247, 247, 247, 1);
+  --white: rgba(255, 255, 255, 1);
 }
 
 @font-face {
