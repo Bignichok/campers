@@ -2,6 +2,7 @@ import { lazy, Suspense } from 'react';
 import { Route, Routes, Navigate } from 'react-router-dom';
 
 const HomePage = lazy(() => import('@/pages/HomePage'));
+const SvgSprite = lazy(() => import('@/components/SvgSprite'));
 
 const App = () => {
 	return (
@@ -14,6 +15,7 @@ const App = () => {
 					<Route path="/catalog/:id" element={<div>/catalog/:id</div>} />
 					<Route path="*" element={<Navigate to="/" replace />} />
 				</Routes>
+				<SvgSprite />
 			</Suspense>
 		</>
 	);
