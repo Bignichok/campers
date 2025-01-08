@@ -8,7 +8,6 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-
 @font-face {
   font-family: 'Inter';
   src: url('/fonts/Inter-Regular.woff2') format('woff2'),
