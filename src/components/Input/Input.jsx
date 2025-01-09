@@ -7,7 +7,11 @@ import css from './Input.module.css';
 const Input = ({ label, placeholder, iconName, onChange, type = 'text', value = '' }) => {
 	return (
 		<div>
-			{label && <label className={css.label}>{label}</label>}
+			{label && (
+				<label htmlFor={label} className={css.label}>
+					{label}
+				</label>
+			)}
 			<div className={css.inputWrapper}>
 				{iconName && (
 					<div className={css.iconHolder}>
@@ -20,6 +24,8 @@ const Input = ({ label, placeholder, iconName, onChange, type = 'text', value = 
 					className={css.inputField}
 					onChange={onChange}
 					value={value}
+					name={label}
+					id={label}
 				/>
 			</div>
 		</div>
