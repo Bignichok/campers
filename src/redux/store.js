@@ -4,9 +4,10 @@ import { persistReducer, FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER } fro
 import storage from 'redux-persist/lib/storage';
 import { persistStore } from 'redux-persist';
 
+import filtersReducer from './filters/slice';
 
 const rootReducer = combineReducers({
-
+	filters: filtersReducer,
 });
 
 const persistConfig = {

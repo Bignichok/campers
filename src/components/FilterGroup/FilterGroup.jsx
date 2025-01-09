@@ -13,7 +13,7 @@ const FilterGroup = ({ filters, onFilterChange, title, activeFilterIds }) => {
 				{filters.map(filter => (
 					<li
 						className={clsx(css.filterGroupItem, {
-							[css.active]: activeFilterIds.includes(filter.id),
+							[css.activeFilter]: activeFilterIds.includes(filter.id),
 						})}
 						key={filter.id}
 						onClick={() => onFilterChange(filter.id)}

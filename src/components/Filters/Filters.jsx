@@ -1,8 +1,8 @@
-import { useState } from 'react';
-
 import Input from '@/components/Input';
 import FilterGroup from '@/components/FilterGroup';
 import Button from '@/components/Button';
+
+import useFilters from './useFilters';
 
 import css from './Filters.module.css';
 
@@ -21,23 +21,15 @@ const vehicleTypes = [
 ];
 
 const Filters = () => {
-	const [location, setLocation] = useState('');
-
-	const handleLocationChange = event => {
-		setLocation(event.target.value);
-	};
-
-	const handleVehicleEquipmentChange = filterId => {
-		console.log('handleVehicleEquipmentChange', filterId);
-	};
-
-	const handleVehicleTypeChange = filterId => {
-		console.log('handleVehicleTypesChange', filterId);
-	};
-
-	const handleSearch = () => {
-		console.log('handleSearch');
-	};
+	const {
+		location,
+		vehicleEquipmentFilters,
+		vehicleTypeFilter,
+		handleLocationChange,
+		handleVehicleEquipmentChange,
+		handleVehicleTypeChange,
+		handleSearch,
+	} = useFilters();
 
 	return (
 		<div>
@@ -56,13 +48,13 @@ const Filters = () => {
 					title="Vehicle equipment"
 					filters={vehicleEquipment}
 					onFilterChange={handleVehicleEquipmentChange}
-					activeFilterIds={[]}
+					activeFilterIds={vehicleEquipmentFilters}
 				/>
 				<FilterGroup
 					title="Vehicle type"
 					filters={vehicleTypes}
 					onFilterChange={handleVehicleTypeChange}
-					activeFilterIds={[]}
+					activeFilterIds={vehicleTypeFilter}
 				/>
 			</div>
 			<Button onClick={handleSearch}>Search</Button>
