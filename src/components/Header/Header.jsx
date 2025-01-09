@@ -2,14 +2,17 @@ import Logo from '@/components/Logo';
 import Navigation from '@/components/Navigation';
 
 import css from './Header.module.css';
+import clsx from 'clsx';
 
 const Header = () => {
 	return (
-		<header className={css.header}>
-			<div className={css.headerLogoHolder}>
-				<Logo />
+		<header className={clsx(css.header, 'container')}>
+			<div className={css.headerContainer}>
+				<div className={css.headerLogoHolder}>
+					<Logo />
+				</div>
+				<Navigation />
 			</div>
-			<Navigation />
 		</header>
 	);
 };

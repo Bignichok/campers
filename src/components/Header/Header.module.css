@@ -1,16 +1,19 @@
 .header {
+    border-bottom: 1px solid var(--badges);
+    background: var(--inputs);
+}
+
+.headerContainer {
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
-    padding: 24px 64px;
-    border-bottom: 1px solid var(--badges);
-    background: var(--inputs);
+    padding: 24px 0;
 }
 
 .headerLogoHolder {
     position: absolute;
     top: 50%;
-    left: 64px;
+    left: 0;
     transform: translateY(-50%);
 }
