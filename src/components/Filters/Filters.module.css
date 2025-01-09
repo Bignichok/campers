@@ -1,0 +1,18 @@
+.locationFilterHolder {
+    margin-bottom: 40px;
+}
+
+.filtersTitle {
+    color: var(--text);
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 24px;
+    margin-bottom: 32px;
+}
+
+.filtersHolder {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    margin-bottom: 40px;
+}
