@@ -40,30 +40,29 @@ export const campersSlice = createSlice({
 			.addCase(fetchCampers.fulfilled, (state, action) => {
 				state.isLoading = false;
 				state.error = null;
-				state.items = action.payload.items.map(item => {
-
-					return {
-						name: item.name,
-						imageUrl: item.gallery[0].thumb,
-						price: item.price,
-						description: item.description,
-						rating: item.rating,
-						reviews: item.reviews.length,
-						location: item.location,
-						id: item.id,
-						equipment: categories.reduce((acc, category) => { 
-							if (item[category.id]) {
-								acc.push({
-									id: category.id,
-									name: category.name || item[category.id],
-									iconName: category.iconName,
-								});
-							}
-							
-							return acc;
-						},[]),
-					}
-				});
+				
+				state.items = action.payload.items.map(item => ({
+					name: item.name,
+					imageUrl: item.gallery[0].thumb,
+					price: item.price,
+					description: item.description,
+					rating: item.rating,
+					reviews: item.reviews.length,
+					location: item.location,
+					id: item.id,
+					form: item.form,
+					equipment: categories.reduce((acc, category) => { 
+						if (item[category.id]) {
+							acc.push({
+								id: category.id,
+								name: category.name || item[category.id],
+								iconName: category.iconName,
+							});
+						}
+						
+						return acc;
+					},[]),
+				}));
 			})
 			.addCase(fetchCampers.rejected, handleRejected)
 	},

@@ -49,9 +49,15 @@ const useFilters = () => {
 		);
 
 		const queryParams = new URLSearchParams();
-		queryParams.set('location', location);
-		queryParams.set('vehicleType', vehicleTypeFilter[0]);
-		queryParams.set('vehicleEquipment', vehicleEquipmentFilters.join(','));
+		if (location) {
+			queryParams.set('location', location);
+		}
+		if (vehicleTypeFilter[0]) {
+			queryParams.set('vehicleType', vehicleTypeFilter[0]);
+		}
+		if (vehicleEquipmentFilters.length > 0) {
+			queryParams.set('vehicleEquipment', vehicleEquipmentFilters.join(','));
+		}
 
 		navigate({ search: queryParams.toString() });
 	};

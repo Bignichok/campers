@@ -5,10 +5,24 @@
     font-weight: 500;
     line-height: 24px;
     min-width: 166px;
-    color: var(--white);
-    background-color: var(--button);
+    text-align: center;
 }
 
-.button:hover {
+.primary:hover {
     background-color: var(--button-hover);
+}
+
+.primary {
+    background-color: var(--button);
+    color: var(--white);
+}
+
+.secondary {
+    background-color: transparent;
+    color: var(--main);
+    border: 1px solid var(--gray-light);
+}
+
+.secondary:hover {
+    border-color: var(--button-hover);
 }
