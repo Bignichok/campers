@@ -1,0 +1,11 @@
+.favoriteButon {
+    color: var(--main);
+}
+
+.favoriteButon:hover {
+    color: var(--button);
+}
+
+.favoriteButonActive {
+    color: var(--button);
+}

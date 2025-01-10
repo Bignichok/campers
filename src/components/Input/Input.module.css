@@ -9,6 +9,7 @@
 }
 
 .label {
+    display: inline-block;
     color: var(--gray);
     font-size: 16px;
     font-weight: 400;

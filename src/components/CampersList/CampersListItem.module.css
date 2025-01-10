@@ -1,0 +1,64 @@
+.wrapper {
+    padding: 24px;
+    display: flex;
+    gap: 24px;
+    border: 1px solid var(--gray-light);
+    border-radius: 20px;
+}
+
+.image {
+    width: 292px;
+    height: 320px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 10px;
+}
+
+.contentHolder {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    flex: 1;
+}
+
+.headerFirstRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+
+.headerSecondRow {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.headerSecondRowItem {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.headerSecondRowItem:first-child {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+.priceHolder {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.button {
+    width: 166px;
+}
+
+.description {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    color: var(--text);
+}

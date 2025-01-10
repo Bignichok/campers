@@ -1,0 +1,6 @@
+.contentHolder {
+    display: grid;
+    grid-template-columns: 360px 1fr;
+    gap: 64px;
+    padding: 48px 64px;
+}
