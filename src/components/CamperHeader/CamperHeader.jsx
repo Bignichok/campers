@@ -29,7 +29,7 @@ const CamperHeader = ({
 			</div>
 			<ul className={css.headerSecondRow}>
 				<li className={css.headerSecondRowItem}>
-					<Icon name="rating" width={16} height={16} />
+					<Icon className={css.ratingIcon} name="rating" width={16} height={16} />
 					<span>
 						{rating} ({reviews} Reviews)
 					</span>

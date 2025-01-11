@@ -11,6 +11,7 @@ import CamperHeader from '@/components/CamperHeader';
 import Tabs from '@/components/Tabs';
 import VehicleDetails from '@/components/VehicleDetails';
 import BookingForm from '@/components/BookingForm';
+import Reviews from '@/components/Reviews';
 
 import css from './CamperPage.module.css';
 
@@ -81,7 +82,8 @@ const CamperPage = () => {
 			<p className={css.description}>{description}</p>
 			<Tabs tabs={tabs} onTabClick={setActiveTab} activeTabId={activeTab} />
 			<div className={css.contentHolder}>
-				<VehicleDetails {...{ equipment, details }} />
+				{activeTab === 'features' && <VehicleDetails {...{ equipment, details }} />}
+				{activeTab === 'reviews' && <Reviews reviews={reviews} />}
 				<BookingForm />
 			</div>
 		</div>

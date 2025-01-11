@@ -1,0 +1,13 @@
+.ratingList {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.activeIcon {
+    color: var(--rating);
+}
+
+.inActiveIcon {
+    color: var(--badges);
+}

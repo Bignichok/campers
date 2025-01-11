@@ -46,3 +46,7 @@
 .detailsPagePrice {
     margin-top: 16px;
 }
+
+.ratingIcon {
+    color: var(--rating);
+}
