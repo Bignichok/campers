@@ -16,6 +16,9 @@ const CampersListItem = ({
 	reviews,
 	location,
 	equipment,
+	id,
+	hanleAddToFavorites,
+	isFavorite,
 }) => {
 	return (
 		<li className={css.wrapper}>
@@ -33,7 +36,10 @@ const CampersListItem = ({
 						<h3>{name}</h3>
 						<div className={css.priceHolder}>
 							<span>{`${price},00`}</span>
-							<FavoriteButton />
+							<FavoriteButton
+								onClick={() => hanleAddToFavorites(id)}
+								isFavorite={isFavorite}
+							/>
 						</div>
 					</div>
 					<ul className={css.headerSecondRow}>
@@ -67,6 +73,9 @@ CampersListItem.propTypes = {
 	reviews: PropTypes.number,
 	location: PropTypes.string,
 	equipment: PropTypes.array,
+	id: PropTypes.string,
+	hanleAddToFavorites: PropTypes.func,
+	isFavorite: PropTypes.bool,
 };
 
 export default CampersListItem;
