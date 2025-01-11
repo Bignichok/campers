@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 
@@ -8,8 +8,20 @@ import { selectCamper, selectCamperLoading, selectCamperError } from '@/redux/ca
 import Spinner from '@/components/Spinner';
 import ErrorMessage from '@/components/ErrorMessage';
 import CamperHeader from '@/components/CamperHeader';
+import Tabs from '@/components/Tabs';
 
 import css from './CamperPage.module.css';
+
+const tabs = [
+	{
+		id: 'features',
+		title: 'Features',
+	},
+	{
+		id: 'reviews',
+		title: 'Reviews',
+	},
+];
 
 const CamperPage = () => {
 	const dispatch = useDispatch();
@@ -17,6 +29,8 @@ const CamperPage = () => {
 	const camper = useSelector(selectCamper);
 	const isLoading = useSelector(selectCamperLoading);
 	const isError = useSelector(selectCamperError);
+
+	const [activeTab, setActiveTab] = useState('features');
 
 	useEffect(() => {
 		dispatch(fetchCamper(id));
@@ -62,6 +76,7 @@ const CamperPage = () => {
 				</ul>
 			)}
 			<p className={css.description}>{description}</p>
+			<Tabs tabs={tabs} onTabClick={setActiveTab} activeTabId={activeTab} />
 		</div>
 	);
 };
