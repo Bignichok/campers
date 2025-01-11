@@ -51,3 +51,21 @@
     outline: none;
     color: var(--main);
 }
+
+.successMessage {
+    position: fixed;
+    top: 20px;
+    left: -300px;
+    background-color: #4caf50;
+    color: white;
+    padding: 15px 30px;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    font-size: 16px;
+    z-index: 1000;
+    transition: left 0.5s ease-in-out;
+}
+
+.successMessage.visible {
+    left: 20px;
+}

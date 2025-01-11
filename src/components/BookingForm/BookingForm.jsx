@@ -1,7 +1,9 @@
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import DatePicker from 'react-datepicker';
+import { toast, ToastContainer } from 'react-toastify';
 
+import 'react-toastify/dist/ReactToastify.css';
 import 'react-datepicker/dist/react-datepicker.css';
 
 import Button from '@/components/Button';
@@ -25,7 +27,10 @@ const BookingForm = () => {
 			comment: Yup.string(),
 		}),
 		onSubmit: (values, { resetForm }) => {
-			//SEND DATA
+			console.log('Form submitted:', values);
+
+			toast.success('Your booking has been submitted successfully!');
+
 			resetForm();
 		},
 	});
@@ -90,6 +95,7 @@ const BookingForm = () => {
 					Submit
 				</Button>
 			</form>
+			<ToastContainer />
 		</div>
 	);
 };
