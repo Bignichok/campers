@@ -17,7 +17,7 @@ const CampersListItem = ({
 	location,
 	equipment,
 	id,
-	hanleAddToFavorites,
+	handleAddToFavorites,
 	isFavorite,
 	handleShowMore,
 }) => {
@@ -38,7 +38,7 @@ const CampersListItem = ({
 						<div className={css.priceHolder}>
 							<span>{`${price},00`}</span>
 							<FavoriteButton
-								onClick={() => hanleAddToFavorites(id)}
+								onClick={() => handleAddToFavorites(id)}
 								isFavorite={isFavorite}
 							/>
 						</div>
@@ -77,7 +77,7 @@ CampersListItem.propTypes = {
 	location: PropTypes.string,
 	equipment: PropTypes.array,
 	id: PropTypes.string,
-	hanleAddToFavorites: PropTypes.func,
+	handleAddToFavorites: PropTypes.func,
 	isFavorite: PropTypes.bool,
 	handleShowMore: PropTypes.func,
 };

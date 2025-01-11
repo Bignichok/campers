@@ -10,7 +10,7 @@ const CampersList = () => {
 		visibleCampers,
 		loadMoreButtonVisibility,
 		handleLoadMore,
-		hanleAddToFavorites,
+		handleAddToFavorites,
 		handleShowMore,
 		isLoading,
 		isError,
@@ -38,7 +38,7 @@ const CampersList = () => {
 				{visibleCampers.map(camper => (
 					<CampersListItem
 						key={camper.id}
-						hanleAddToFavorites={hanleAddToFavorites}
+						handleAddToFavorites={handleAddToFavorites}
 						handleShowMore={handleShowMore}
 						{...camper}
 					/>
