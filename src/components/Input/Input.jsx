@@ -4,7 +4,16 @@ import Icon from '@/components/Icon';
 
 import css from './Input.module.css';
 
-const Input = ({ label, placeholder, iconName, onChange, type = 'text', value = '' }) => {
+const Input = ({
+	label,
+	placeholder,
+	iconName,
+	onChange,
+	type = 'text',
+	value = '',
+	name,
+	...props
+}) => {
 	return (
 		<div>
 			{label && (
@@ -24,8 +33,9 @@ const Input = ({ label, placeholder, iconName, onChange, type = 'text', value = 
 					className={css.inputField}
 					onChange={onChange}
 					value={value}
-					name={label}
+					name={name}
 					id={label}
+					{...props}
 				/>
 			</div>
 		</div>
@@ -39,6 +49,7 @@ Input.propTypes = {
 	onChange: PropTypes.func,
 	type: PropTypes.string,
 	value: PropTypes.string,
+	name: PropTypes.string,
 };
 
 export default Input;

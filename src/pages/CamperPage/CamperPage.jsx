@@ -10,6 +10,7 @@ import ErrorMessage from '@/components/ErrorMessage';
 import CamperHeader from '@/components/CamperHeader';
 import Tabs from '@/components/Tabs';
 import VehicleDetails from '@/components/VehicleDetails';
+import BookingForm from '@/components/BookingForm';
 
 import css from './CamperPage.module.css';
 
@@ -81,6 +82,7 @@ const CamperPage = () => {
 			<Tabs tabs={tabs} onTabClick={setActiveTab} activeTabId={activeTab} />
 			<div className={css.contentHolder}>
 				<VehicleDetails {...{ equipment, details }} />
+				<BookingForm />
 			</div>
 		</div>
 	);
