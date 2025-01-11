@@ -24,3 +24,9 @@
     color: var(--text);
     margin-bottom: 60px;
 }
+
+.contentHolder {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+}

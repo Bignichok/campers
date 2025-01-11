@@ -9,6 +9,7 @@ import Spinner from '@/components/Spinner';
 import ErrorMessage from '@/components/ErrorMessage';
 import CamperHeader from '@/components/CamperHeader';
 import Tabs from '@/components/Tabs';
+import VehicleDetails from '@/components/VehicleDetails';
 
 import css from './CamperPage.module.css';
 
@@ -52,7 +53,8 @@ const CamperPage = () => {
 		);
 	}
 
-	const { name, price, rating, reviews, location, gallery, description } = camper;
+	const { name, price, rating, reviews, location, gallery, description, equipment, details } =
+		camper;
 
 	return (
 		<div className={css.container}>
@@ -77,6 +79,9 @@ const CamperPage = () => {
 			)}
 			<p className={css.description}>{description}</p>
 			<Tabs tabs={tabs} onTabClick={setActiveTab} activeTabId={activeTab} />
+			<div className={css.contentHolder}>
+				<VehicleDetails {...{ equipment, details }} />
+			</div>
 		</div>
 	);
 };

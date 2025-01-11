@@ -15,3 +15,7 @@
     background-color: var(--badges);
     color: var(--main);
 }
+
+.secondary {
+    background-color: var(--gray-100);
+}

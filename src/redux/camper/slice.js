@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-import { getFormattedPrice, getCamperEquipment } from '@/utils';
+import { getFormattedPrice, getCamperEquipment, formatFormField } from '@/utils';
 
 import { fetchCamper } from './operations';
 
@@ -32,6 +32,8 @@ export const camperSlice = createSlice({
 				state.isLoading = false;
 				state.error = null;
 				const camper = action.payload;
+			
+
 				state.camper = {
 					name: camper.name,
 					gallery: camper.gallery,
@@ -42,14 +44,14 @@ export const camperSlice = createSlice({
 					location: camper.location,
 					id: camper.id,
 					equipment: getCamperEquipment(camper),
-					details: {
-						form: camper.form,
-						length: camper.length,
-						width: camper.width,
-						height: camper.height,
-						tank: camper.tank,
-						consumption: camper.consumption,
-					}
+					details: [
+						{ id: 'form', title: 'Form', value: formatFormField(camper.form) },
+						{ id: 'length', title: 'Length', value: camper.length },
+						{ id:'width', title: 'Width', value: camper.width },
+						{ id: 'height', title: 'Height', value: camper.height },
+						{ id: 'tank', title: 'Tank', value: camper.tank },
+						{ id: 'consumption', title: 'Consumption', value: camper.consumption }
+					],
 				};
 			})
 			.addCase(fetchCamper.rejected, handleRejected)
