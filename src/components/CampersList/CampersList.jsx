@@ -1,5 +1,6 @@
 import Button from '@/components/Button';
 import Spinner from '@/components/Spinner';
+import ErrorMessage from '@/components/ErrorMessage';
 
 import useCampersList from './useCampersList';
 import CampersListItem from './CampersListItem';
@@ -17,11 +18,7 @@ const CampersList = () => {
 	} = useCampersList();
 
 	if (isError) {
-		return (
-			<p className={css.error}>
-				Sorry, the service is temporarily unavailable. Please try again later.
-			</p>
-		);
+		return <ErrorMessage />;
 	}
 
 	if (isLoading) {

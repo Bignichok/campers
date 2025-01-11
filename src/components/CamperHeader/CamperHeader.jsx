@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import clsx from 'clsx';
 
 import Icon from '@/components/Icon';
 import FavoriteButton from '@/components/FavoriteButton';
@@ -13,15 +14,18 @@ const CamperHeader = ({
 	rating,
 	reviews,
 	location,
+	detailsPage,
 }) => {
 	return (
 		<div>
 			<div className={css.headerFirstRow}>
-				<h3>{name}</h3>
-				<div className={css.priceHolder}>
-					<span>{`${price},00`}</span>
-					<FavoriteButton onClick={handleAddToFavorites} isFavorite={isFavorite} />
-				</div>
+				<h3 className={css.title}>{name}</h3>
+				{!detailsPage && (
+					<div className={css.priceHolder}>
+						<span className={css.price}>{price}</span>
+						<FavoriteButton onClick={handleAddToFavorites} isFavorite={isFavorite} />
+					</div>
+				)}
 			</div>
 			<ul className={css.headerSecondRow}>
 				<li className={css.headerSecondRowItem}>
@@ -35,6 +39,7 @@ const CamperHeader = ({
 					<span>{location}</span>
 				</li>
 			</ul>
+			{detailsPage && <span className={clsx(css.price, css.detailsPagePrice)}>{price}</span>}
 		</div>
 	);
 };
@@ -47,5 +52,6 @@ CamperHeader.propTypes = {
 	rating: PropTypes.number,
 	reviews: PropTypes.number,
 	location: PropTypes.string,
+	detailsPage: PropTypes.bool,
 };
 export default CamperHeader;

@@ -5,11 +5,13 @@ import storage from 'redux-persist/lib/storage';
 import { persistStore } from 'redux-persist';
 
 import filtersReducer from './filters/slice';
+import camperReducer from './camper/slice';
 import campersReducer from './campers/slice';
 import favoritesReducer from './favorites/slice';
 
 const rootReducer = combineReducers({
 	filters: filtersReducer,
+	camper: camperReducer,
 	campers: campersReducer,
 	favorites: favoritesReducer,
 });
