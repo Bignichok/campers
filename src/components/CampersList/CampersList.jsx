@@ -11,7 +11,6 @@ const CampersList = () => {
 		visibleCampers,
 		loadMoreButtonVisibility,
 		handleLoadMore,
-		handleAddToFavorites,
 		handleShowMore,
 		isLoading,
 		isError,
@@ -33,12 +32,7 @@ const CampersList = () => {
 		<div className={css.campersListHolder}>
 			<ul className={css.campersList}>
 				{visibleCampers.map(camper => (
-					<CampersListItem
-						key={camper.id}
-						handleAddToFavorites={handleAddToFavorites}
-						handleShowMore={handleShowMore}
-						{...camper}
-					/>
+					<CampersListItem key={camper.id} handleShowMore={handleShowMore} {...camper} />
 				))}
 			</ul>
 			{loadMoreButtonVisibility && (

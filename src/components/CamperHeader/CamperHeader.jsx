@@ -6,16 +6,7 @@ import FavoriteButton from '@/components/FavoriteButton';
 
 import css from './CamperHeader.module.css';
 
-const CamperHeader = ({
-	name,
-	price,
-	handleAddToFavorites,
-	isFavorite,
-	rating,
-	reviews,
-	location,
-	detailsPage,
-}) => {
+const CamperHeader = ({ name, price, id, rating, reviews, location, detailsPage }) => {
 	return (
 		<div>
 			<div className={css.headerFirstRow}>
@@ -23,7 +14,7 @@ const CamperHeader = ({
 				{!detailsPage && (
 					<div className={css.priceHolder}>
 						<span className={css.price}>{price}</span>
-						<FavoriteButton onClick={handleAddToFavorites} isFavorite={isFavorite} />
+						<FavoriteButton id={id} />
 					</div>
 				)}
 			</div>
@@ -47,8 +38,7 @@ const CamperHeader = ({
 CamperHeader.propTypes = {
 	name: PropTypes.string,
 	price: PropTypes.string,
-	handleAddToFavorites: PropTypes.func,
-	isFavorite: PropTypes.bool,
+	id: PropTypes.string,
 	rating: PropTypes.number,
 	reviews: PropTypes.number,
 	location: PropTypes.string,

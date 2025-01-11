@@ -1,9 +1,6 @@
 import { useCallback } from 'react';
-import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router-dom';
-
-import { setFavorites } from '@/redux/favorites/slice';
 
 import Button from '@/components/Button';
 import EquipmentList from '@/components/EquipmentList';
@@ -23,12 +20,7 @@ const CampersListItem = ({
 	id,
 	isFavorite,
 }) => {
-	const dispatch = useDispatch();
 	const navigate = useNavigate();
-
-	const handleAddToFavorites = useCallback(() => {
-		dispatch(setFavorites(id));
-	}, []);
 
 	const handleShowMore = useCallback(() => {
 		navigate(`/catalog/${id}`);
@@ -49,11 +41,11 @@ const CampersListItem = ({
 					{...{
 						name,
 						price,
-						handleAddToFavorites,
 						isFavorite,
 						rating,
 						reviews,
 						location,
+						id,
 					}}
 				/>
 				<p className={css.description}>{description}</p>
@@ -69,14 +61,13 @@ const CampersListItem = ({
 CampersListItem.propTypes = {
 	name: PropTypes.string,
 	imageUrl: PropTypes.string,
-	price: PropTypes.number,
+	price: PropTypes.string,
 	description: PropTypes.string,
 	rating: PropTypes.number,
 	reviews: PropTypes.number,
 	location: PropTypes.string,
 	equipment: PropTypes.array,
 	id: PropTypes.string,
-	handleAddToFavorites: PropTypes.func,
 	isFavorite: PropTypes.bool,
 	handleShowMore: PropTypes.func,
 };

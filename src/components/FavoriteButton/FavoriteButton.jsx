@@ -1,21 +1,34 @@
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
+import { useSelector, useDispatch } from 'react-redux';
+
+import { selectFavorites } from '@/redux/favorites/selectors';
+import { setFavorites } from '@/redux/favorites/slice';
 
 import Icon from '@/components/Icon';
 
 import css from './FavoriteButton.module.css';
 
-const FavoriteButton = ({ isFavorite, onClick }) => (
-	<button
-		className={clsx(css.favoriteButon, { [css.favoriteButonActive]: isFavorite })}
-		onClick={onClick}
-	>
-		<Icon name="heart" />
-	</button>
-);
+const FavoriteButton = ({ id }) => {
+	const dispatch = useDispatch();
+	const favorites = useSelector(selectFavorites);
+
+	const handleAddToFavorites = () => {
+		dispatch(setFavorites(id));
+	};
+
+	const isFavorite = favorites.includes(id);
+	return (
+		<button
+			className={clsx(css.favoriteButon, { [css.favoriteButonActive]: isFavorite })}
+			onClick={handleAddToFavorites}
+		>
+			<Icon name="heart" />
+		</button>
+	);
+};
 
 FavoriteButton.propTypes = {
-	isFavorite: PropTypes.bool,
-	onClick: PropTypes.func,
+	id: PropTypes.string,
 };
 export default FavoriteButton;
