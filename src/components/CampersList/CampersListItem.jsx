@@ -1,9 +1,13 @@
+import { useCallback } from 'react';
+import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
+import { useNavigate } from 'react-router-dom';
 
-import Icon from '@/components/Icon';
+import { setFavorites } from '@/redux/favorites/slice';
+
 import Button from '@/components/Button';
 import EquipmentList from '@/components/EquipmentList';
-import FavoriteButton from '@/components/FavoriteButton';
+import CamperHeader from '@/components/CamperHeader';
 
 import css from './CampersListItem.module.css';
 
@@ -17,10 +21,19 @@ const CampersListItem = ({
 	location,
 	equipment,
 	id,
-	handleAddToFavorites,
 	isFavorite,
-	handleShowMore,
 }) => {
+	const dispatch = useDispatch();
+	const navigate = useNavigate();
+
+	const handleAddToFavorites = useCallback(() => {
+		dispatch(setFavorites(id));
+	}, []);
+
+	const handleShowMore = useCallback(() => {
+		navigate(`/catalog/${id}`);
+	}, []);
+
 	return (
 		<li className={css.wrapper}>
 			<img
@@ -32,34 +45,20 @@ const CampersListItem = ({
 				loading="lazy"
 			/>
 			<div className={css.contentHolder}>
-				<div>
-					<div className={css.headerFirstRow}>
-						<h3>{name}</h3>
-						<div className={css.priceHolder}>
-							<span>{`${price},00`}</span>
-							<FavoriteButton
-								onClick={() => handleAddToFavorites(id)}
-								isFavorite={isFavorite}
-							/>
-						</div>
-					</div>
-					<ul className={css.headerSecondRow}>
-						<li className={css.headerSecondRowItem}>
-							<Icon name="rating" width={16} height={16} />
-							<span>
-								{rating} ({reviews} Reviews)
-							</span>
-						</li>
-						<li className={css.headerSecondRowItem}>
-							<Icon name="map" width={16} height={16} />
-							<span>{location}</span>
-						</li>
-					</ul>
-				</div>
-
+				<CamperHeader
+					{...{
+						name,
+						price,
+						handleAddToFavorites,
+						isFavorite,
+						rating,
+						reviews,
+						location,
+					}}
+				/>
 				<p className={css.description}>{description}</p>
 				<EquipmentList equipment={equipment} />
-				<Button className={css.button} onClick={() => handleShowMore(id)}>
+				<Button className={css.button} onClick={handleShowMore}>
 					Show more
 				</Button>
 			</div>

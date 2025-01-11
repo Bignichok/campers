@@ -1,0 +1,29 @@
+.headerFirstRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.headerSecondRow {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.headerSecondRowItem {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.headerSecondRowItem:first-child {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+.priceHolder {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}

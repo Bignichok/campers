@@ -1,6 +1,5 @@
 import { useEffect, useState, useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
 
 import { fetchCampers } from '@/redux/campers/operations';
 import {
@@ -8,11 +7,9 @@ import {
 	selectCampersLoading,
 	selectCampersError,
 } from '@/redux/campers/selectors';
-import { setFavorites } from '@/redux/favorites/slice';
 
 const useCampersList = () => {
 	const dispatch = useDispatch();
-	const navigate = useNavigate();
 	const campers = useSelector(selectFilteredCampers);
 	const isLoading = useSelector(selectCampersLoading);
 	const isError = useSelector(selectCampersError);
@@ -31,14 +28,6 @@ const useCampersList = () => {
 		setVisibleCount(prevCount => prevCount + 4);
 	}, []);
 
-	const handleAddToFavorites = useCallback(camperId => {
-		dispatch(setFavorites(camperId));
-	}, []);
-
-	const handleShowMore = useCallback(camperId => {
-		navigate(`/catalog/${camperId}`);
-	}, []);
-
 	const visibleCampers = campers.slice(0, visibleCount);
 	const loadMoreButtonVisibility = campers.length > visibleCount;
 
@@ -46,8 +35,6 @@ const useCampersList = () => {
 		visibleCampers,
 		loadMoreButtonVisibility,
 		handleLoadMore,
-		handleAddToFavorites,
-		handleShowMore,
 		isLoading,
 		isError,
 	};
