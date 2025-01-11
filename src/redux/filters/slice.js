@@ -1,11 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const queryParams = new URLSearchParams(window.location.search);
-
 const initialState = {
-	location: queryParams.get('location') || '',
-	vehicleType: queryParams.get('vehicleType') || '',
-	vehicleEquipment: queryParams.get('vehicleEquipment') ? queryParams.get('vehicleEquipment').split(',') : [],
+	location: '',
+	vehicleType: '',
+	vehicleEquipment: [],
 };
 
 export const filtersSlice = createSlice({
@@ -17,9 +15,14 @@ export const filtersSlice = createSlice({
 			state.vehicleType = action.payload.vehicleType;
 			state.vehicleEquipment = action.payload.vehicleEquipment;
 		},
-	},
+		clearFilters: state => {
+			state.location = initialState.location;
+			state.vehicleType = initialState.vehicleType;
+			state.vehicleEquipment = initialState.vehicleEquipment;
+		}
+	}
 });
 
-export const { setFilters } = filtersSlice.actions;
+export const { setFilters, clearFilters } = filtersSlice.actions;
 
 export default filtersSlice.reducer;

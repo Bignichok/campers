@@ -1,43 +1,54 @@
-import { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { useState, useEffect, useCallback } from 'react';
+import { useDispatch } from 'react-redux';
+import { useSearchParams } from 'react-router';
 
-import { setFilters } from '@/redux/filters/slice';
-import { selectFilters } from '@/redux/filters/selectors';
+import { setFilters, clearFilters } from '@/redux/filters/slice';
 
 const useFilters = () => {
 	const dispatch = useDispatch();
-	const navigate = useNavigate();
+	const [searchParams, setSearchParams] = useSearchParams();
 
-	const filters = useSelector(selectFilters);
-
-	const [location, setLocation] = useState(filters.location);
+	const [location, setLocation] = useState(searchParams.get('location') || '');
 	const [vehicleEquipmentFilters, setVehicleEquipmentFilters] = useState(
-		filters.vehicleEquipment
+		searchParams.get('vehicleEquipment') ? searchParams.get('vehicleEquipment').split(',') : []
 	);
-	const [vehicleTypeFilter, setVehicleTypeFilter] = useState([filters.vehicleType]);
+	const [vehicleTypeFilter, setVehicleTypeFilter] = useState([
+		searchParams.get('vehicleType') || '',
+	]);
 
-	const handleLocationChange = event => {
+	useEffect(() => {
+		dispatch(
+			setFilters({
+				location,
+				vehicleType: vehicleTypeFilter[0],
+				vehicleEquipment: vehicleEquipmentFilters,
+			})
+		);
+
+		return () => dispatch(clearFilters());
+	}, []);
+
+	const handleLocationChange = useCallback(event => {
 		setLocation(event.target.value);
-	};
+	}, []);
 
-	const handleVehicleEquipmentChange = filterId => {
+	const handleVehicleEquipmentChange = useCallback(filterId => {
 		setVehicleEquipmentFilters(prevFilters => {
 			if (prevFilters.includes(filterId)) {
 				return prevFilters.filter(id => id !== filterId);
 			}
 			return [...prevFilters, filterId];
 		});
-	};
+	}, []);
 
-	const handleVehicleTypeChange = filterId => {
+	const handleVehicleTypeChange = useCallback(filterId => {
 		setVehicleTypeFilter(prevFilters => {
 			if (prevFilters.includes(filterId)) {
 				return [];
 			}
 			return [filterId];
 		});
-	};
+	}, []);
 
 	const handleSearch = () => {
 		dispatch(
@@ -59,7 +70,7 @@ const useFilters = () => {
 			queryParams.set('vehicleEquipment', vehicleEquipmentFilters.join(','));
 		}
 
-		navigate({ search: queryParams.toString() });
+		setSearchParams(queryParams);
 	};
 
 	return {
