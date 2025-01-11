@@ -38,13 +38,30 @@ const CamperPage = () => {
 		);
 	}
 
-	const { name, price, rating, reviews, location } = camper;
+	const { name, price, rating, reviews, location, gallery, description } = camper;
 
 	return (
 		<div className={css.container}>
 			<CamperHeader
 				{...{ name, price, rating, reviews: reviews.length, location, detailsPage: true }}
 			/>
+			{gallery?.length > 0 && (
+				<ul className={css.gallery}>
+					{gallery.map(({ thumb }, index) => (
+						<li key={index}>
+							<img
+								className={css.image}
+								src={thumb}
+								width={292}
+								height={312}
+								alt={name}
+								loading="lazy"
+							/>
+						</li>
+					))}
+				</ul>
+			)}
+			<p className={css.description}>{description}</p>
 		</div>
 	);
 };

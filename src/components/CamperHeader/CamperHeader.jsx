@@ -46,7 +46,7 @@ const CamperHeader = ({
 
 CamperHeader.propTypes = {
 	name: PropTypes.string,
-	price: PropTypes.number,
+	price: PropTypes.string,
 	handleAddToFavorites: PropTypes.func,
 	isFavorite: PropTypes.bool,
 	rating: PropTypes.number,
