@@ -3,13 +3,19 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 import { fetchCampers } from '@/redux/campers/operations';
-import { selectFilteredCampers } from '@/redux/campers/selectors';
+import {
+	selectFilteredCampers,
+	selectCampersLoading,
+	selectCampersError,
+} from '@/redux/campers/selectors';
 import { setFavorites } from '@/redux/favorites/slice';
 
 const useCampersList = () => {
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 	const campers = useSelector(selectFilteredCampers);
+	const isLoading = useSelector(selectCampersLoading);
+	const isError = useSelector(selectCampersError);
 
 	const [visibleCount, setVisibleCount] = useState(4);
 
@@ -42,6 +48,8 @@ const useCampersList = () => {
 		handleLoadMore,
 		hanleAddToFavorites,
 		handleShowMore,
+		isLoading,
+		isError,
 	};
 };
 

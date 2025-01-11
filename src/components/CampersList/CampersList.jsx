@@ -1,4 +1,5 @@
 import Button from '@/components/Button';
+import Spinner from '@/components/Spinner';
 
 import useCampersList from './useCampersList';
 import CampersListItem from './CampersListItem';
@@ -11,7 +12,21 @@ const CampersList = () => {
 		handleLoadMore,
 		hanleAddToFavorites,
 		handleShowMore,
+		isLoading,
+		isError,
 	} = useCampersList();
+
+	if (isError) {
+		return (
+			<p className={css.error}>
+				Sorry, the service is temporarily unavailable. Please try again later.
+			</p>
+		);
+	}
+
+	if (isLoading) {
+		return <Spinner />;
+	}
 
 	if (!visibleCampers.length) {
 		return null;

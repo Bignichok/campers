@@ -22,3 +22,7 @@ export const selectFilteredCampers = createSelector(
         }));
     }
 );
+
+export const selectCampersLoading = state => state.campers.isLoading;
+
+export const selectCampersError = state => state.campers.error;
