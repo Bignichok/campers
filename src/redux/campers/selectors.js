@@ -11,7 +11,7 @@ export const selectFilteredCampers = createSelector(
         const { location, vehicleType, vehicleEquipment } = filters;
 
         return campers.filter(camper => (
-            (!location || camper.location.includes(location)) &&
+            (!location || camper.location.toLowerCase().includes(location.toLowerCase())) &&
             (!vehicleType || camper.form === vehicleType) &&
             (!vehicleEquipment.length || vehicleEquipment.every(reqEquip =>
                 camper.equipment.some(equip => equip.id === reqEquip)
