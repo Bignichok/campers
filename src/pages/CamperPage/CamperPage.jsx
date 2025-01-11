@@ -66,7 +66,7 @@ const CamperPage = () => {
 			{gallery?.length > 0 && (
 				<ul className={css.gallery}>
 					{gallery.map(({ thumb }, index) => (
-						<li key={index}>
+						<li key={index} className={css.imageHolder}>
 							<img
 								className={css.image}
 								src={thumb}
