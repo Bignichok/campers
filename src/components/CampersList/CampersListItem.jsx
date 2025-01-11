@@ -19,6 +19,7 @@ const CampersListItem = ({
 	id,
 	hanleAddToFavorites,
 	isFavorite,
+	handleShowMore,
 }) => {
 	return (
 		<li className={css.wrapper}>
@@ -58,7 +59,9 @@ const CampersListItem = ({
 
 				<p className={css.description}>{description}</p>
 				<EquipmentList equipment={equipment} />
-				<Button className={css.button}>Show more</Button>
+				<Button className={css.button} onClick={() => handleShowMore(id)}>
+					Show more
+				</Button>
 			</div>
 		</li>
 	);
@@ -76,6 +79,7 @@ CampersListItem.propTypes = {
 	id: PropTypes.string,
 	hanleAddToFavorites: PropTypes.func,
 	isFavorite: PropTypes.bool,
+	handleShowMore: PropTypes.func,
 };
 
 export default CampersListItem;
